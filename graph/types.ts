@@ -4,6 +4,62 @@
 // This file was automatically generated and should not be edited.
 
 // ====================================================
+// GraphQL query operation: GetRepository
+// ====================================================
+
+export interface GetRepository_repository_primaryLanguage {
+  __typename: "Language";
+  id: string;
+  name: string;  // The name of the current language.
+}
+
+export interface GetRepository_repository_licenseInfo {
+  __typename: "License";
+  name: string;  // The license full name specified by <https:
+}
+
+export interface GetRepository_repository_repositoryTopics_nodes_topic {
+  __typename: "Topic";
+  name: string;  // The topic's name.
+}
+
+export interface GetRepository_repository_repositoryTopics_nodes {
+  __typename: "RepositoryTopic";
+  topic: GetRepository_repository_repositoryTopics_nodes_topic;  // The topic.
+}
+
+export interface GetRepository_repository_repositoryTopics {
+  __typename: "RepositoryTopicConnection";
+  nodes: (GetRepository_repository_repositoryTopics_nodes)[];  // A list of nodes.
+}
+
+export interface GetRepository_repository {
+  __typename: "Repository";
+  id: string;
+  name: string;                                                      // The name of the repository.
+  homepageUrl: any | null;                                           // The repository's URL.
+  stargazerCount: number;                                            // Returns a count of how many stargazers there are on this object
+  description: string | null;                                        // The description of the repository.
+  viewerHasStarred: boolean;                                         // Returns a boolean indicating whether the viewing user has starred this starrable.
+  primaryLanguage: GetRepository_repository_primaryLanguage | null;  // The primary language of the repository's code.
+  licenseInfo: GetRepository_repository_licenseInfo | null;          // The license associated with the repository
+  repositoryTopics: GetRepository_repository_repositoryTopics;       // A list of applied repository-topic associations for this repository.
+}
+
+export interface GetRepository {
+  repository: GetRepository_repository;  // Lookup a given repository by the owner and repository name.
+}
+
+export interface GetRepositoryVariables {
+  login: string;
+  name: string;
+}
+
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
 // GraphQL query operation: GetOrganizationQuery
 // ====================================================
 
