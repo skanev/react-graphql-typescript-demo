@@ -45,6 +45,7 @@ export interface StarRepositoryMutation_addStar_starrable {
   __typename: "Repository" | "Topic" | "Gist";
   id: string;
   viewerHasStarred: boolean;  // Returns a boolean indicating whether the viewing user has starred this starrable.
+  stargazerCount: number;     // Returns a count of how many stargazers there are on this object
 }
 
 export interface StarRepositoryMutation_addStar {
@@ -72,6 +73,7 @@ export interface UnstarRepositoryMutation_removeStar_starrable {
   __typename: "Repository" | "Topic" | "Gist";
   id: string;
   viewerHasStarred: boolean;  // Returns a boolean indicating whether the viewing user has starred this starrable.
+  stargazerCount: number;     // Returns a count of how many stargazers there are on this object
 }
 
 export interface UnstarRepositoryMutation_removeStar {
