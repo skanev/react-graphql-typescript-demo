@@ -1,8 +1,6 @@
 import {gql, useQuery} from '@apollo/client'
-import classnames from 'classnames'
 import Link from 'next/link'
 import {GetOrganizationQuery, GetOrganizationQueryVariables} from '../graph/types'
-import {useToggleStar} from '../hooks/useToggleStar'
 import {Spinner} from './Spinner'
 
 const GET_ORGANIZATION_QUERY = gql`
@@ -20,13 +18,11 @@ const GET_ORGANIZATION_QUERY = gql`
   }
 `
 
-export function RepositoryList({login, active}: {login: string; active?: string}) {
+export function RepositoryList({login}: {login: string}) {
   const {data, loading, error} = useQuery<GetOrganizationQuery, GetOrganizationQueryVariables>(GET_ORGANIZATION_QUERY, {
     ssr: false,
     variables: {login}
   })
-
-  const toggle = useToggleStar()
 
   if (loading)
     return (
@@ -39,13 +35,13 @@ export function RepositoryList({login, active}: {login: string; active?: string}
   return (
     <div className="repositories">
       <ul>
-        {data.organization!.repositories.nodes!.map(repository => (
-          <li key={repository!.id} className={classnames({active: repository!.name === active})}>
-            <Link href={`/org/${login}/repo/${repository!.name}`}>
-              <a>{repository!.name}</a>
+        {data.organization.repositories.nodes.map(repository => (
+          <li key={repository.id}>
+            <Link href={`/org/${login}/repo/${repository.name}`}>
+              <a>{repository.name}</a>
             </Link>
-            <button onClick={() => toggle({id: repository!.id, starred: !repository!.viewerHasStarred})}>
-              <span>{repository!.stargazerCount}</span> {repository!.viewerHasStarred ? '★' : '☆'}
+            <button>
+              <span>{repository.stargazerCount}</span> {repository.viewerHasStarred ? '★' : '☆'}
             </button>
           </li>
         ))}
