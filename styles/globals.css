@@ -1,3 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.organizations { @apply text-center }
+.organizations li { @apply text-gray-900 hover:bg-gray-50 hover:text-gray-900 rounded-md py-2 px-3 inline-flex items-center text-sm font-medium; }
+.organizations li.active { @apply bg-gray-200 text-gray-900 rounded-md py-2 px-3 inline-flex items-center text-sm font-medium; }
+
+
+.repositories { @apply flex w-80  }
+.repositories ul { @apply flex-1 divide-solid divide-y divide-gray-200 border }
+.repositories ul li { @apply px-2 py-3 text-sm flex  }
+.repositories ul li > a { @apply flex-1 pt-1.5 place-content-center }
+.repositories ul li button { @apply w-28 text-left px-4 py-2 border border-transparent shadow-sm text-sm leading-4 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 }
+.repositories ul li button span { @apply float-right }
+
+.repositories ul li.active { @apply bg-indigo-600 text-white }
+.repositories ul li.active button { @apply bg-white text-indigo-600 }
+
+.repository { @apply mx-4 }
+.repository button { @apply float-right px-4 py-2 border border-transparent shadow-sm text-sm leading-4 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 }
+.repository h1 { @apply text-xl font-semibold }
+.repository .description { @apply italic text-gray-500 }
+.repository .topics { @apply flex }
+.repository .topics li { @apply mr-1 mb-4 px-3 py-0.5 border whitespace-nowrap rounded-full font-medium text-xs bg-indigo-400 text-white}
+
+main { @apply mx-4 }
+main > div { @apply flex max-w-screen-lg mx-auto }
+main > div > div + div { @apply flex-grow }
+
 html,
 body {
   padding: 0;
